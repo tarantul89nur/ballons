@@ -33,6 +33,13 @@ gulp.task("copy-js", function() {
     .pipe(server.reload({stream: true}));
 });
 
+gulp.task("copy-json", function() {
+  return gulp.src("src/json/**/*.*", {base: 'src/json'})
+    .pipe(gulp.dest('build/json'))
+    .pipe(gulp.dest('build/json'))
+    .pipe(server.reload({stream: true}));
+});
+
 gulp.task('jade', function() {
     return gulp.src('src/*.jade')
       .pipe(jade({pretty: true}))
@@ -72,8 +79,9 @@ gulp.task("serve", function() {
   gulp.watch('src/css/**/*', ['copy-css']);
   gulp.watch('src/img/**/*', ['copy-img']);
   gulp.watch('src/js/**/*', ['copy-js']);
+  gulp.watch('src/json/**/*', ['copy-json']);
 });
 
 gulp.task("build", function(fn) {
-  run("clean", ["copy-css", "copy-js"], "jade", "style", fn);
+  run("clean", ["copy-css", "copy-js", "copy-json"], "jade", "style", fn);
 });
