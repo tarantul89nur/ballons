@@ -19,7 +19,7 @@ function init () {
         ]
       }, {
         // Опции
-        preset: json.theaters[i].preset,
+        preset: 'islands#' + json.theaters[i].preset + 'CircleIcon',
       });
 
       // Добавляем метку в кластер
